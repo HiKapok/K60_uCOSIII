@@ -1,0 +1,485 @@
+###############################################################################
+#                                                                             #
+#                                                       03/Nov/2015  20:45:50 #
+# IAR ANSI C/C++ Compiler V6.30.6.23336/W32 EVALUATION for ARM                #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\FTFL\FTFL.c     #
+#    Command line =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\FTFL\FTFL.c -D  #
+#                    COMPILER_IAR -lCN "C:\Users\WangChangan\Desktop\K10Ð¡°å¶ #
+#                    ¨¸å\IAR Files\FLASH\List\" -lB                           #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\FLASH\List\" -o "C:\Users\WangChangan\Desktop\K10Ð #
+#                    ¡°å¶¨¸å\IAR Files\FLASH\Obj\" --no_cse --no_unroll       #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M4  #
+#                    -e --fpu=None --dlib_config "C:\Program Files\IAR        #
+#                    Systems\Embedded Workbench 6.0                           #
+#                    Evaluation\arm\INC\c\DLib_Config_Normal.h" -I            #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Project_Headers\" -I                            #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\KinetisDrivers\" -I                             #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\ExtraFunction\" -I                              #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Hardware_Interface\" -I                         #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Make_Decision\" -I                              #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Math\" -I "C:\Users\WangChangan\Desktop\K10Ð¡°å #
+#                    ¶¨¸å\IAR Files\..\Original_Process\" -I                  #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Platform\" -I "C:\Users\WangChangan\Desktop\K10 #
+#                    Ð¡°å¶¨¸å\IAR Files\..\SD_System\" -I                     #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Source\" -I "C:\Users\WangChangan\Desktop\K10Ð¡ #
+#                    °å¶¨¸å\IAR Files\..\System_Init\" -Ol                    #
+#    List file    =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR             #
+#                    Files\FLASH\List\FTFL.lst                                #
+#    Object file  =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR             #
+#                    Files\FLASH\Obj\FTFL.o                                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\FTFL\FTFL.c
+      1          #include "FTFL.h"
+      2          #include "stdlib.h"
+      3          #include "inttypes.h"
+      4          
+      5          /*******************************************************************************
+      6          * º¯ÊýÃû³Æ£ºFTFL_Init
+      7          * Èë¿Ú²ÎÊý£º
+      8          * ·µ»Ø²ÎÊý£º
+      9          * Ãè    Êö£º³õÊ¼»¯FTFLÄ£¿é
+     10          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void FTFL_Init (void)
+     12          {
+     13            SIM_SCGC6 |= SIM_SCGC6_FTFL_MASK;
+   \                     FTFL_Init:
+   \   00000000   0x....             LDR.N    R0,??DataTable3  ;; 0x4004803c
+   \   00000002   0x6800             LDR      R0,[R0, #+0]
+   \   00000004   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \   00000008   0x....             LDR.N    R1,??DataTable3  ;; 0x4004803c
+   \   0000000A   0x6008             STR      R0,[R1, #+0]
+     14          }
+   \   0000000C   0x4770             BX       LR               ;; return
+     15          /*******************************************************************************
+     16          * º¯ÊýÃû³Æ£ºFTFL_IsCmdLaunched
+     17          * Èë¿Ú²ÎÊý£º
+     18          * ·µ»Ø²ÎÊý£º
+     19          * Ãè    Êö£ºÖ´ÐÐ²¢ÅÐ¶ÏFTFLÖ¸ÁîÊÇ·ñ³É¹¦
+     20          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     21          uint8_t FTFL_IsCmdLaunched (void)
+     22          {
+     23            uint32_t nWaitCnt = 0; // µÈ´ý¼ÆÊýÆ÷
+   \                     FTFL_IsCmdLaunched:
+   \   00000000   0x2000             MOVS     R0,#+0
+     24            
+     25            if (FTFL_IsAccessErr () || FTFL_IsProtectionViolated ())
+   \   00000002   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40020000
+   \   00000004   0x7809             LDRB     R1,[R1, #+0]
+   \   00000006   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000008   0x0689             LSLS     R1,R1,#+26
+   \   0000000A   0xD404             BMI.N    ??FTFL_IsCmdLaunched_0
+   \   0000000C   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40020000
+   \   0000000E   0x7809             LDRB     R1,[R1, #+0]
+   \   00000010   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000012   0x06C9             LSLS     R1,R1,#+27
+   \   00000014   0xD505             BPL.N    ??FTFL_IsCmdLaunched_1
+     26            {
+     27              // Èç¹ûÒÑ·¢Éú·ÃÎÊÔ½È¨»ò±£»¤ÇøÎó·ÃÎÊ£¬Çå³ýÆä²úÉúµÄ´íÎó±êÖ¾£¬·ñÔòFTFLÃüÁîÎÞ·¨Ö´ÐÐ
+     28              FTFL_ClearErrBits ();
+   \                     ??FTFL_IsCmdLaunched_0:
+   \   00000016   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40020000
+   \   00000018   0x7809             LDRB     R1,[R1, #+0]
+   \   0000001A   0xF051 0x0130      ORRS     R1,R1,#0x30
+   \   0000001E   0x....             LDR.N    R2,??DataTable3_1  ;; 0x40020000
+   \   00000020   0x7011             STRB     R1,[R2, #+0]
+     29            }
+     30            
+     31            // Çå³ýCCIFÎ»£¬Æô¶¯ÃüÁîµÄÖ´ÐÐ
+     32            FTFL_FSTAT = FTFL_FSTAT_CCIF_MASK;
+   \                     ??FTFL_IsCmdLaunched_1:
+   \   00000022   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40020000
+   \   00000024   0x2280             MOVS     R2,#+128
+   \   00000026   0x700A             STRB     R2,[R1, #+0]
+     33            // µÈ´ýFTFL²Ù×÷Íê³É
+     34            while (((nWaitCnt++) <= 100000) && (!FTFL_IsCmdFinish ()));
+   \                     ??FTFL_IsCmdLaunched_2:
+   \   00000028   0x0001             MOVS     R1,R0
+   \   0000002A   0x1C48             ADDS     R0,R1,#+1
+   \   0000002C   0x....             LDR.N    R2,??DataTable3_2  ;; 0x186a1
+   \   0000002E   0x4291             CMP      R1,R2
+   \   00000030   0xD205             BCS.N    ??FTFL_IsCmdLaunched_3
+   \   00000032   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40020000
+   \   00000034   0x7809             LDRB     R1,[R1, #+0]
+   \   00000036   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000038   0x09C9             LSRS     R1,R1,#+7
+   \   0000003A   0x2900             CMP      R1,#+0
+   \   0000003C   0xD0F4             BEQ.N    ??FTFL_IsCmdLaunched_2
+     35            
+     36            // ´íÎó´¦Àí
+     37            if (nWaitCnt > 100000)
+   \                     ??FTFL_IsCmdLaunched_3:
+   \   0000003E   0x....             LDR.N    R1,??DataTable3_2  ;; 0x186a1
+   \   00000040   0x4288             CMP      R0,R1
+   \   00000042   0xD301             BCC.N    ??FTFL_IsCmdLaunched_4
+     38            {
+     39              // Èô³¬Ê±£¬Ôò·µ»Ø´íÎó
+     40              return FTFL_CODE_ERR;
+   \   00000044   0x20F0             MOVS     R0,#+240
+   \   00000046   0xE00C             B.N      ??FTFL_IsCmdLaunched_5
+     41            }
+     42            
+     43            if (FTFL_IsAccessErr () || FTFL_IsProtectionViolated ())
+   \                     ??FTFL_IsCmdLaunched_4:
+   \   00000048   0x....             LDR.N    R0,??DataTable3_1  ;; 0x40020000
+   \   0000004A   0x7800             LDRB     R0,[R0, #+0]
+   \   0000004C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000004E   0x0680             LSLS     R0,R0,#+26
+   \   00000050   0xD404             BMI.N    ??FTFL_IsCmdLaunched_6
+   \   00000052   0x....             LDR.N    R0,??DataTable3_1  ;; 0x40020000
+   \   00000054   0x7800             LDRB     R0,[R0, #+0]
+   \   00000056   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000058   0x06C0             LSLS     R0,R0,#+27
+   \   0000005A   0xD501             BPL.N    ??FTFL_IsCmdLaunched_7
+     44            {
+     45              // Èç¹û·¢Éú·ÃÎÊÔ½È¨»ò±£»¤ÇøÎó·ÃÎÊ£¬·µ»Ø´íÎó
+     46              return FTFL_CODE_ERR;
+   \                     ??FTFL_IsCmdLaunched_6:
+   \   0000005C   0x20F0             MOVS     R0,#+240
+   \   0000005E   0xE000             B.N      ??FTFL_IsCmdLaunched_5
+     47            }
+     48            // ²Ù×÷ÕýÈ·Íê³É£¬·µ»ØÌáÊ¾Âë
+     49            return FTFL_CODE_SUCCESS;
+   \                     ??FTFL_IsCmdLaunched_7:
+   \   00000060   0x20F1             MOVS     R0,#+241
+   \                     ??FTFL_IsCmdLaunched_5:
+   \   00000062   0x4770             BX       LR               ;; return
+     50          }
+     51          /*******************************************************************************
+     52          * º¯ÊýÃû³Æ£ºFTFL_EraseSector
+     53          * Èë¿Ú²ÎÊý£ºuint16_t iSectorNo £ºÉÈÇøºÅ
+     54          * ·µ»Ø²ÎÊý£ºFTFL_CODE_ERR£º²Ù×÷Ê§°Ü£»FTFL_CODE_SUCCESS£º²Ù×÷³É¹¦
+     55          * Ãè    Êö£º²Á³ý³ÌÐòflashÉÈÇø
+     56          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     57          uint8_t FTFL_EraseSector (uint16_t iSectorNo)
+     58          {
+   \                     FTFL_EraseSector:
+   \   00000000   0xB580             PUSH     {R7,LR}
+     59            union{
+     60              uint32_t addrs_word;
+     61              uint8_t addrs_byte[4];
+     62            }union_addrs; // ÁªºÏÌå£¬ÓÃÓÚµØÖ·¼ÆËã
+     63            
+     64            // Èë²ÎºÏ·¨ÐÔ¼ìÑé
+     65            if (iSectorNo < 2)
+   \   00000002   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \   00000004   0x2802             CMP      R0,#+2
+   \   00000006   0xD201             BCS.N    ??FTFL_EraseSector_0
+     66            {
+     67              /* flashµÄ0ºÅsectorÎªÖÐ¶ÏÏòÁ¿ÒÔ¼°Òýµ¼µÄ´æ´¢Î»ÖÃ£¬²»¿É¸²¸Ç
+     68              £¬ÎªÈ·±£°²È«£¬´ÓµÚÈýÇø¿ªÊ¼Ð´£»K10DN512ÓÐ512K flash£¬Ã¿Çø2K
+     69              £¬¹²ÓÐ256¸öÇø                                             */
+     70              return FTFL_CODE_ERR;
+   \   00000008   0x20F0             MOVS     R0,#+240
+   \   0000000A   0xE018             B.N      ??FTFL_EraseSector_1
+     71            }
+     72            
+     73            // ¼ÆËãÇøÆ«ÒÆµØÖ·
+     74            union_addrs.addrs_word = (((uint32_t)iSectorNo) << 11);
+   \                     ??FTFL_EraseSector_0:
+   \   0000000C   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \   0000000E   0x02C0             LSLS     R0,R0,#+11
+   \   00000010   0x9000             STR      R0,[SP, #+0]
+     75            
+     76            // ×°ÔØÖ¸Áî
+     77            FTFL_FCCOB0 = FTFL_CMD_EFS;  // ²Á³ýÉÈÇøÖ¸Áî
+   \   00000012   0x....             LDR.N    R0,??DataTable3_3  ;; 0x40020007
+   \   00000014   0x2109             MOVS     R1,#+9
+   \   00000016   0x7001             STRB     R1,[R0, #+0]
+     78            FTFL_FCCOB1 = union_addrs.addrs_byte[2]; // ÉÈÇøµØÖ·
+   \   00000018   0xF89D 0x0002      LDRB     R0,[SP, #+2]
+   \   0000001C   0x....             LDR.N    R1,??DataTable3_4  ;; 0x40020006
+   \   0000001E   0x7008             STRB     R0,[R1, #+0]
+     79            FTFL_FCCOB2 = union_addrs.addrs_byte[1];
+   \   00000020   0xF89D 0x0001      LDRB     R0,[SP, #+1]
+   \   00000024   0x....             LDR.N    R1,??DataTable3_5  ;; 0x40020005
+   \   00000026   0x7008             STRB     R0,[R1, #+0]
+     80            FTFL_FCCOB3 = union_addrs.addrs_byte[0];
+   \   00000028   0x....             LDR.N    R0,??DataTable3_6  ;; 0x40020004
+   \   0000002A   0xF89D 0x1000      LDRB     R1,[SP, #+0]
+   \   0000002E   0x7001             STRB     R1,[R0, #+0]
+     81            
+     82            if (FTFL_CODE_ERR == FTFL_IsCmdLaunched ())
+   \   00000030   0x.... 0x....      BL       FTFL_IsCmdLaunched
+   \   00000034   0x28F0             CMP      R0,#+240
+   \   00000036   0xD101             BNE.N    ??FTFL_EraseSector_2
+     83            {
+     84              // ÈôÖ¸ÁîÖ´ÐÐÊ§°Ü£¬·µ»Ø´íÎóÂë
+     85              return FTFL_CODE_ERR;
+   \   00000038   0x20F0             MOVS     R0,#+240
+   \   0000003A   0xE000             B.N      ??FTFL_EraseSector_1
+     86            }
+     87            // ²Ù×÷³É¹¦£¬·µ»ØÌáÊ¾Âë
+     88            return FTFL_CODE_SUCCESS;
+   \                     ??FTFL_EraseSector_2:
+   \   0000003C   0x20F1             MOVS     R0,#+241
+   \                     ??FTFL_EraseSector_1:
+   \   0000003E   0xBD02             POP      {R1,PC}          ;; return
+     89          }
+     90          /*******************************************************************************
+     91          * º¯ÊýÃû³Æ£ºFTFL_WriteLongWord
+     92          * Èë¿Ú²ÎÊý£ºuint16_t iSectorNo £ºÉÈÇøºÅ£»
+     93                      uint16_t iOffset£ºÆ«ÒÆµØÖ·£»
+     94                      uint8_t iByte[4]£ºÐ´ÈëµÄËÄ×Ö½Ú
+     95          * ·µ»Ø²ÎÊý£ºFTFL_CODE_ERR£º²Ù×÷Ê§°Ü£»FTFL_CODE_SUCCESS£º²Ù×÷³É¹¦
+     96          * Ãè    Êö£ºÐ´Èë³ÌÐòflashËÄ¸ö×Ö½Ú
+     97          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     98          uint8_t FTFL_WriteLongWord (uint16_t iSectorNo, uint16_t iOffset, uint8_t iByte[4])
+     99          {
+   \                     FTFL_WriteLongWord:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    100            union{
+    101              uint32_t addrs_word;
+    102              uint8_t addrs_byte[4];
+    103            }union_addrs; // ÁªºÏÌå£¬ÓÃÓÚµØÖ·¼ÆËã
+    104            
+    105            // Èë²ÎºÏ·¨ÐÔ¼ìÑé
+    106            if (iSectorNo < 2)
+   \   00000002   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \   00000004   0x2802             CMP      R0,#+2
+   \   00000006   0xD201             BCS.N    ??FTFL_WriteLongWord_0
+    107            {
+    108              /* flashµÄ0ºÅsectorÎªÖÐ¶ÏÏòÁ¿ÒÔ¼°Òýµ¼µÄ´æ´¢Î»ÖÃ£¬²»¿É¸²¸Ç
+    109              £¬ÎªÈ·±£°²È«£¬´ÓµÚÈýÇø¿ªÊ¼Ð´£»K10DN512ÓÐ512K flash£¬Ã¿Çø2K
+    110              £¬¹²ÓÐ256¸öÇø                                             */
+    111              return FTFL_CODE_ERR;
+   \   00000008   0x20F0             MOVS     R0,#+240
+   \   0000000A   0xE026             B.N      ??FTFL_WriteLongWord_1
+    112            }
+    113            
+    114            // ¼ÆËãÇøÆ«ÒÆµØÖ·
+    115            union_addrs.addrs_word = (((uint32_t)iSectorNo) << 11) + iOffset;
+   \                     ??FTFL_WriteLongWord_0:
+   \   0000000C   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \   0000000E   0x02C0             LSLS     R0,R0,#+11
+   \   00000010   0xFA10 0xF081      UXTAH    R0,R0,R1
+   \   00000014   0x9000             STR      R0,[SP, #+0]
+    116            
+    117            // ×°ÔØÖ¸Áî
+    118            FTFL_FCCOB0 = FTFL_CMD_PGM4;  // ²Á³ýÉÈÇøÖ¸Áî
+   \   00000016   0x....             LDR.N    R0,??DataTable3_3  ;; 0x40020007
+   \   00000018   0x2106             MOVS     R1,#+6
+   \   0000001A   0x7001             STRB     R1,[R0, #+0]
+    119            FTFL_FCCOB1 = union_addrs.addrs_byte[2];   // ÉÈÇøµØÖ·
+   \   0000001C   0xF89D 0x0002      LDRB     R0,[SP, #+2]
+   \   00000020   0x....             LDR.N    R1,??DataTable3_4  ;; 0x40020006
+   \   00000022   0x7008             STRB     R0,[R1, #+0]
+    120            FTFL_FCCOB2 = union_addrs.addrs_byte[1];
+   \   00000024   0xF89D 0x0001      LDRB     R0,[SP, #+1]
+   \   00000028   0x....             LDR.N    R1,??DataTable3_5  ;; 0x40020005
+   \   0000002A   0x7008             STRB     R0,[R1, #+0]
+    121            FTFL_FCCOB3 = union_addrs.addrs_byte[0];
+   \   0000002C   0x....             LDR.N    R0,??DataTable3_6  ;; 0x40020004
+   \   0000002E   0xF89D 0x1000      LDRB     R1,[SP, #+0]
+   \   00000032   0x7001             STRB     R1,[R0, #+0]
+    122            // ×°ÔØÊý¾Ý            
+    123            FTFL_FCCOB4 = iByte[3];
+   \   00000034   0x78D0             LDRB     R0,[R2, #+3]
+   \   00000036   0x....             LDR.N    R1,??DataTable3_7  ;; 0x4002000b
+   \   00000038   0x7008             STRB     R0,[R1, #+0]
+    124            FTFL_FCCOB5 = iByte[2];
+   \   0000003A   0x7890             LDRB     R0,[R2, #+2]
+   \   0000003C   0x....             LDR.N    R1,??DataTable3_8  ;; 0x4002000a
+   \   0000003E   0x7008             STRB     R0,[R1, #+0]
+    125            FTFL_FCCOB6 = iByte[1];
+   \   00000040   0x7850             LDRB     R0,[R2, #+1]
+   \   00000042   0x....             LDR.N    R1,??DataTable3_9  ;; 0x40020009
+   \   00000044   0x7008             STRB     R0,[R1, #+0]
+    126            FTFL_FCCOB7 = iByte[0];
+   \   00000046   0x....             LDR.N    R0,??DataTable3_10  ;; 0x40020008
+   \   00000048   0x7811             LDRB     R1,[R2, #+0]
+   \   0000004A   0x7001             STRB     R1,[R0, #+0]
+    127            
+    128            if (FTFL_CODE_ERR == FTFL_IsCmdLaunched ())
+   \   0000004C   0x.... 0x....      BL       FTFL_IsCmdLaunched
+   \   00000050   0x28F0             CMP      R0,#+240
+   \   00000052   0xD101             BNE.N    ??FTFL_WriteLongWord_2
+    129            {
+    130              // ÈôÖ¸ÁîÖ´ÐÐÊ§°Ü£¬·µ»Ø´íÎóÂë
+    131              return FTFL_CODE_ERR;
+   \   00000054   0x20F0             MOVS     R0,#+240
+   \   00000056   0xE000             B.N      ??FTFL_WriteLongWord_1
+    132            }
+    133            // ²Ù×÷³É¹¦£¬·µ»ØÌáÊ¾Âë
+    134            return FTFL_CODE_SUCCESS;
+   \                     ??FTFL_WriteLongWord_2:
+   \   00000058   0x20F1             MOVS     R0,#+241
+   \                     ??FTFL_WriteLongWord_1:
+   \   0000005A   0xBD02             POP      {R1,PC}          ;; return
+    135          }
+    136          /*******************************************************************************
+    137          * º¯ÊýÃû³Æ£ºFTFL_ReadFlash
+    138          * Èë¿Ú²ÎÊý£ºuint16_t iSectorNo £ºÉÈÇøºÅ£»uint16_t iOffset£ºÆ«ÒÆµØÖ·£»uint16_t nByteCnt£º¶Á³öÊý¾ÝµÄ¸öÊý
+    139          * ·µ»Ø²ÎÊý£ºNULL£º²Ù×÷Ê§°Ü£»uint8_t* addrsBkp£º»º´æÇøÊ×µØÖ·
+    140          * Ãè    Êö£ºÐ´Èë³ÌÐòflashËÄ¸ö×Ö½Ú
+    141          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    142          uint8_t * FTFL_ReadFlash (uint16_t iSectorNo, uint16_t iOffset, uint16_t nByteCnt)
+    143          {
+   \                     FTFL_ReadFlash:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+   \   00000006   0x0016             MOVS     R6,R2
+    144            uint32_t addrs = 0; // flashµØÖ·
+   \   00000008   0x2700             MOVS     R7,#+0
+    145            
+    146            uint8_t* recBuffer = (uint8_t*) malloc (nByteCnt * sizeof (uint8_t)); // ·ÖÅä½ÓÊÜ»º´æ
+   \   0000000A   0xB2B6             UXTH     R6,R6            ;; ZeroExt  R6,R6,#+16,#+16
+   \   0000000C   0x0030             MOVS     R0,R6
+   \   0000000E   0x.... 0x....      BL       malloc
+   \   00000012   0x0001             MOVS     R1,R0
+    147            uint8_t* addrsBkp = NULL; // »º´æÊ×µØÖ·±¸·Ý
+   \   00000014   0x2000             MOVS     R0,#+0
+    148            if (NULL == recBuffer)
+   \   00000016   0x2900             CMP      R1,#+0
+   \   00000018   0xD101             BNE.N    ??FTFL_ReadFlash_0
+    149            {
+    150              // Èô·ÖÅäÊ§°Ü£¬ÔòËµÃ÷ÄÚ´æ¶ÑÒÑºÄ¾¡£¬·µ»Ø´íÎó
+    151              return (uint8_t*)NULL;
+   \   0000001A   0x2000             MOVS     R0,#+0
+   \   0000001C   0xE00E             B.N      ??FTFL_ReadFlash_1
+    152            }
+    153            addrsBkp = recBuffer; // ±£´æ»º´æµØÖ·
+   \                     ??FTFL_ReadFlash_0:
+   \   0000001E   0x0008             MOVS     R0,R1
+    154            // ¼ÆËãÄ¿±êµØÖ·
+    155            addrs = (((uint32_t)iSectorNo) << 11) + iOffset;
+   \   00000020   0xB2A4             UXTH     R4,R4            ;; ZeroExt  R4,R4,#+16,#+16
+   \   00000022   0x02E2             LSLS     R2,R4,#+11
+   \   00000024   0xFA12 0xF785      UXTAH    R7,R2,R5
+   \   00000028   0xE003             B.N      ??FTFL_ReadFlash_2
+    156            // ¶ÁÈ¡nByteCnt×Ö½ÚµØÖ·
+    157            while (nByteCnt--)
+    158            {
+    159              *recBuffer++ = *((uint8_t*)addrs++); // -1ÊÇÒòÎªÒÔaddrs¿ªÊ¼ÖÁaddrs + n - 1
+   \                     ??FTFL_ReadFlash_3:
+   \   0000002A   0x783A             LDRB     R2,[R7, #+0]
+   \   0000002C   0x700A             STRB     R2,[R1, #+0]
+   \   0000002E   0x1C7F             ADDS     R7,R7,#+1
+   \   00000030   0x1C49             ADDS     R1,R1,#+1
+    160            }
+   \                     ??FTFL_ReadFlash_2:
+   \   00000032   0x0032             MOVS     R2,R6
+   \   00000034   0x1E56             SUBS     R6,R2,#+1
+   \   00000036   0xB292             UXTH     R2,R2            ;; ZeroExt  R2,R2,#+16,#+16
+   \   00000038   0x2A00             CMP      R2,#+0
+   \   0000003A   0xD1F6             BNE.N    ??FTFL_ReadFlash_3
+    161            // ·µ»Ø»º´æÇøµØÖ·
+    162            return addrsBkp;
+   \                     ??FTFL_ReadFlash_1:
+   \   0000003C   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    163          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   0x4004803C         DC32     0x4004803c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \   00000000   0x40020000         DC32     0x40020000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \   00000000   0x000186A1         DC32     0x186a1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \   00000000   0x40020007         DC32     0x40020007
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \   00000000   0x40020006         DC32     0x40020006
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_5:
+   \   00000000   0x40020005         DC32     0x40020005
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_6:
+   \   00000000   0x40020004         DC32     0x40020004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_7:
+   \   00000000   0x4002000B         DC32     0x4002000b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_8:
+   \   00000000   0x4002000A         DC32     0x4002000a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_9:
+   \   00000000   0x40020009         DC32     0x40020009
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_10:
+   \   00000000   0x40020008         DC32     0x40020008
+    164          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        8  FTFL_EraseSector
+              8 -> FTFL_IsCmdLaunched
+        0  FTFL_Init
+        0  FTFL_IsCmdLaunched
+       24  FTFL_ReadFlash
+             24 -> malloc
+        8  FTFL_WriteLongWord
+              8 -> FTFL_IsCmdLaunched
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_10
+       4  ??DataTable3_2
+       4  ??DataTable3_3
+       4  ??DataTable3_4
+       4  ??DataTable3_5
+       4  ??DataTable3_6
+       4  ??DataTable3_7
+       4  ??DataTable3_8
+       4  ??DataTable3_9
+      64  FTFL_EraseSector
+      14  FTFL_Init
+     100  FTFL_IsCmdLaunched
+      62  FTFL_ReadFlash
+      92  FTFL_WriteLongWord
+
+ 
+ 376 bytes in section .text
+ 
+ 376 bytes of CODE memory
+
+Errors: none
+Warnings: none

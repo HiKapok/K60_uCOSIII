@@ -1,0 +1,117 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Nov/2015  22:49:18 #
+# IAR ANSI C/C++ Compiler V6.30.6.23336/W32 EVALUATION for ARM                #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Users\WangChangan\Desktop\K60_uCOS\uCOS_III\CortexM4\ #
+#                    os_cpu_def.c                                             #
+#    Command line =  C:\Users\WangChangan\Desktop\K60_uCOS\uCOS_III\CortexM4\ #
+#                    os_cpu_def.c -D COMPILER_IAR -lCN                        #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\RAM\List\" -lB "C:\Users\WangChangan\Desktop\K60_u #
+#                    COS\IAR Files\RAM\List\" -o                              #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\RAM\Obj\" --no_cse --no_unroll --no_inline         #
+#                    --no_code_motion --no_tbaa --no_clustering               #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M4  #
+#                    -e --char_is_signed --fpu=None --dlib_config             #
+#                    "C:\Program Files\IAR Systems\Embedded Workbench 6.0     #
+#                    Evaluation\arm\INC\c\DLib_Config_Normal.h" -I            #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR Files\..\IAR  #
+#                    Files\Project_Headers\" -I "C:\Users\WangChangan\Desktop #
+#                    \K60_uCOS\IAR Files\..\KinetisDrivers\" -I               #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\Source\" -I "C:\Users\WangChangan\Desktop\K60_u #
+#                    COS\IAR Files\..\App\ExtraFunction\" -I                  #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\SD_System\" -I                              #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\LEDCtl\" -I "C:\Users\WangChangan\Desktop\K #
+#                    60_uCOS\IAR Files\..\App\ZLG7290\" -I                    #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\OLED\" -I "C:\Users\WangChangan\Desktop\K60 #
+#                    _uCOS\IAR Files\..\App\FTFL\" -I                         #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\Platform\" -I "C:\Users\WangChangan\Desktop #
+#                    \K60_uCOS\IAR Files\..\App\System_Init\" -I              #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\HardwareInterface\" -I                      #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\App\TypeAdapter\" -I                            #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\uCOS_III\Cfg\" -I "C:\Users\WangChangan\Desktop #
+#                    \K60_uCOS\IAR Files\..\uCOS_III\Source\" -I              #
+#                    "C:\Users\WangChangan\Desktop\K60_uCOS\IAR               #
+#                    Files\..\uCOS_III\CortexM4\" -Ol                         #
+#    List file    =  C:\Users\WangChangan\Desktop\K60_uCOS\IAR                #
+#                    Files\RAM\List\os_cpu_def.lst                            #
+#    Object file  =  C:\Users\WangChangan\Desktop\K60_uCOS\IAR                #
+#                    Files\RAM\Obj\os_cpu_def.o                               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\WangChangan\Desktop\K60_uCOS\uCOS_III\CortexM4\os_cpu_def.c
+      1          CPU_DATA  CPU_CntLeadZeros (CPU_DATA  val)
+      2          {
+      3              CPU_DATA  nbr_lead_zeros;
+      4          
+      5              nbr_lead_zeros = CPU_CntLeadZeros32((CPU_INT32U)val);
+      6          
+      7              return (nbr_lead_zeros);
+      8          }
+      9          
+     10          /*
+     11          *********************************************************************************************************
+     12          *                                        CPU_CntLeadZeros32()
+     13          *
+     14          * Description : Count the number of contiguous, most-significant, leading zero bits in a 32-bit data value.
+     15          *
+     16          * Argument(s) : va  l         Data value to count leading zero bits.
+     17          *
+     18          * Return(s)   : Number of contiguous, most-significant, leading zero bits in 'val'.
+     19          *
+     20          * Caller(s)   : CPU_CntLeadZeros(),
+     21          *               CPU_CntTrailZeros32(),
+     22          *               Application.
+     23          *
+     24          *               This function is a CPU module application programming interface (API) function & MAY be 
+     25          *               called by application function(s).
+     26          *
+     27          * Note(s)     : (1) Supports 32-bit values :
+     28          *
+     29          *                          b31  b30  b29  ...  b04  b03  b02  b01  b00    # Leading Zeros
+     30          *                          ---  ---  ---       ---  ---  ---  ---  ---    ---------------
+     31          *                           1    x    x         x    x    x    x    x            0
+     32          *                           0    1    x         x    x    x    x    x            1
+     33          *                           0    0    1         x    x    x    x    x            2
+     34          *                           :    :    :         :    :    :    :    :            :
+     35          *                           :    :    :         :    :    :    :    :            :
+     36          *                           0    0    0         1    x    x    x    x           27
+     37          *                           0    0    0         0    1    x    x    x           28
+     38          *                           0    0    0         0    0    1    x    x           29
+     39          *                           0    0    0         0    0    0    1    x           30
+     40          *                           0    0    0         0    0    0    0    1           31
+     41          *                           0    0    0         0    0    0    0    0           32
+     42          *
+     43          *
+     44          *                   See also 'CPU COUNT LEAD ZEROs LOOKUP TABLE  Note #1'.
+     45          *********************************************************************************************************
+     46          */
+     47          
+     48          
+     49          CPU_DATA  CPU_CntLeadZeros32 (CPU_INT32U  val)
+     50          {
+     51              CPU_DATA  nbr_lead_zeros;
+     52                                                                                          /* ---------- ASM-OPTIMIZED ----------- */
+     53              nbr_lead_zeros  =  CPU_CntLeadZeros((CPU_DATA)val);
+     54              nbr_lead_zeros -= 0u;
+     55          
+     56              return (nbr_lead_zeros);
+     57          }
+
+Errors: 10
+Warnings: 1

@@ -1,0 +1,145 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[DebugChecksum]
+Checksum=-1636005290
+[Exceptions]
+StopOnUncaught=_ 0
+StopOnThrow=_ 0
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[JLinkDriver]
+TraceBufferSize=0x00010000
+TraceStallIfFIFOFull=0x00000000
+TracePortSize=0x00000004
+WatchCond=_ 0
+Watch0=_ 0 "" 0 "" 0 "" 0 "" 0 0 0 0
+Watch1=_ 0 "" 0 "" 0 "" 0 "" 0 0 0 0
+[struct_types]
+Fmt0=LEDCtl_t-Tim_On1	3	0
+Fmt1=LEDCtl_t-Tim_OnOff	3	0
+[watch_formats]
+Fmt0={W}42:BOMA	1	0
+Fmt1={W}42:BOMA2	1	0
+Fmt2={W}42:BomaCode	1	0
+Fmt3={W}42:CenterSlope	3	0
+Fmt4={W}42:CenterValidFar	3	0
+Fmt5={W}42:CenterValidNear	3	0
+Fmt6={W}42:CenterValidNum	3	0
+Fmt7={W}42:Cnt_Bridge	3	0
+Fmt8={W}42:EN_DriftFlag	3	0
+Fmt9={W}42:Flag	3	0
+Fmt10={W}42:ICL_ErrorWhole	3	0
+Fmt11={W}42:ICL_ValidNum	3	0
+Fmt12={W}42:IFlag	3	0
+Fmt13={W}42:KS_Num	3	0
+Fmt14={W}42:Key_Value	5	0
+Fmt15={W}42:L_MaxSlopeLine	3	0
+Fmt16={W}42:NearError	3	0
+Fmt17={W}42:NewPicturePro	3	0
+Fmt18={W}42:SD_Utemp	1	0
+Fmt19={W}42:SD_Utemp1	3	0
+Fmt20={W}42:StraightPathFlag	3	0
+Fmt21={W}42:Straight_Flag	3	0
+Fmt22={W}42:sluggishFlag	3	0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Trace1]
+Enabled=0
+ShowSource=1
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=1
+Graph=0
+Symbiont=0
+Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Count=0
+[Aliases]
+A0=_ "C:\Documents and Settings\Administrator\桌面\Car1\Make_Decision\MakeDecision.c" ""
+A1=_ "C:\Documents and Settings\Administrator\桌面\国赛1.1.0\国赛1.1.0\KinetisDrivers\KinetisStartUp.s" ""
+A2=_ "C:\Documents and Settings\Administrator\桌面\国赛1.1.0\国赛1.1.0\SD_System\SD_driver.c" ""
+A3=_ "C:\Documents and Settings\Administrator\桌面\国赛程序1.2.1\国赛1.2.0\KinetisDrivers\KinetisStartUp.s" ""
+A4=_ "C:\Documents and Settings\Administrator\桌面\国赛程序1.2.2\国赛1.2.0\KinetisDrivers\KinetisStartUp.s" ""
+A5=_ "C:\Documents and Settings\Administrator\桌面\新轮胎程序 起跑线已加\国赛1.1.0\Make_Decision\MakeDecision.c" ""
+A6=_ "C:\Documents and Settings\Sword\桌面\KinetisCar_CW_IAR V1.02 OFFICIALLY\KinetisDrivers\KinetisStartUp.s" ""
+A7=_ "C:\Documents and Settings\Sword\桌面\KinetisCar_CW_IAR V1.02 OFFICIALLY\Make_Decision\MakeDecision.c" ""
+A8=_ "C:\Users\Administrator\Desktop\调试程序\KinetisDrivers\KinetisStartUp.s" ""
+A9=_ "C:\Users\WangChangan\Desktop\K10基本测试程序\KinetisDrivers\KinetisStartUp.s" ""
+A10=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR New\KinetisDrivers\KinetisStartUp.s" ""
+A11=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR V1.04 New\KinetisDrivers\KinetisStartUp.s" ""
+A12=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR V1.04 New\Make_Decision\MakeDecision.c" ""
+A13=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR\KinetisDrivers\KinetisOperate.c" ""
+A14=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR\KinetisDrivers\KinetisStart.c" ""
+A15=_ "D:\KINETIS512_SC\KinetisCar_CW_IAR\KinetisDrivers\KinetisStartUp.s" ""
+A16=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\1.2.3.3\国赛程序1.2.3加补偿\国赛程序1.2.3加补偿\国赛1.2.3\KinetisDrivers\KinetisStartUp.s" ""
+A17=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\1.2.3.3\国赛程序1.2.4\国赛1.2.4\KinetisDrivers\KinetisStartUp.s" ""
+A18=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\8-1 - 副本\Make_Decision\MakeDecision.c" ""
+A19=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\8-2 SDU新底层\KinetisDrivers\KinetisOperate.c" ""
+A20=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\8-2 SDU新底层\KinetisDrivers\KinetisStart.c" ""
+A21=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\8-2 SDU新底层\KinetisDrivers\KinetisStartUp.s" ""
+A22=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\8-2 SDU新底层\SD_System\SD_driver.c" ""
+A23=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\第八届暂用底层图像处理函数全部转移、G数组有误删81\Original_Process\OriginalProcess.c" ""
+A24=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\国赛1.0.0-底层更正\KinetisDrivers\KinetisStartUp.s" ""
+A25=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\国赛1.0.1\Make_Decision\MakeDecision.c" ""
+A26=_ "D:\STUDY\赛区赛培训资料\国赛底层（有中线）\安东新版\2013国赛\国赛1.0.2 - 副本\Make_Decision\MakeDecision.c" ""
+A27=_ "D:\第八届国赛程序\二号车\国赛程序1.2.7-调试版\国赛1.2.7\KinetisDrivers\KinetisStartUp.s" ""
+A28=_ "D:\第八届国赛程序\二号车\国赛程序1.2.7-调试版\国赛1.2.7\Make_Decision\MakeDecision.c" ""
+A29=_ "D:\国赛1.0.0-底层更正\KinetisDrivers\KinetisOperate.c" ""
+A30=_ "D:\国赛1.0.0-底层更正\KinetisDrivers\KinetisStart.c" ""
+A31=_ "D:\国赛1.0.0-底层更正\KinetisDrivers\KinetisStartUp.s" ""
+A32=_ "D:\国赛1.0.0-底层更正\SD_System\SD_driver.c" ""
+A33=_ "D:\国赛1.0.0-底层更正\SD_System\fat32txt.c" ""
+A34=_ "D:\国赛程序1.2.7 - 加拨码\国赛1.2.7\Make_Decision\MakeDecision.c" ""
+A35=_ "E:\1.2.3.3\国赛程序1.2.5 - 副本\国赛1.2.5\Make_Decision\MakeDecision.c" ""
+A36=_ "E:\1.2.3.3\国赛程序1.2.6 - 8-18 晚上 - 修改\国赛1.2.6\Make_Decision\MakeDecision.c" ""
+A37=_ "E:\1.2.3.3\国赛程序1.2.6\国赛1.2.6\KinetisDrivers\KinetisStart.c" ""
+A38=_ "E:\1.2.3.3\国赛程序1.2.6\国赛1.2.6\KinetisDrivers\KinetisStartUp.s" ""
+A39=_ "E:\1.2.3.3\国赛程序1.2.7 - 加拨码\国赛1.2.7\KinetisDrivers\KinetisStart.c" ""
+A40=_ "E:\1.2.3.3\国赛程序1.2.7 - 加拨码\国赛1.2.7\KinetisDrivers\KinetisStartUp.s" ""
+A41=_ "E:\BiSai+TiaoShi KinetisCar_CW_IAR 7.17\tiao shi\KinetisDrivers\KinetisStartUp.s" ""
+A42=_ "E:\SmartCar\ARM PROGRAMME\KinetisCar_CW_IAR V1.0 READY\KinetisDrivers\KinetisStartUp.s" ""
+A43=_ "E:\SmartCar\ARM PROGRAMME\KinetisCar_CW_IAR V1.04 8.21 改了调速18.67s\Make_Decision\MakeDecision.c" ""
+A44=_ "E:\SmartCar\ARM PROGRAMME\KinetisCar_CW_IAR\KinetisDrivers\KinetisStartUp.s" ""
+A45=_ "E:\第八届国赛程序——决战哈尔滨\二号车\国赛程序1.2.7-调试版\国赛1.2.7\KinetisDrivers\KinetisStartUp.s" ""
+A46=_ "E:\第八届国赛程序——决战哈尔滨\二号车\国赛程序1.2.7-调试版\国赛1.2.7\Make_Decision\MakeDecision.c" ""
+A47=_ "E:\决战南京\国赛比赛程序\Car1\KinetisDrivers\KinetisStartUp.s" ""
+A48=_ "F:\8-4 ZhuLongZongDiCeng\KinetisDrivers\KinetisStartUp.s" ""
+A49=_ "F:\8-4 ZhuLongZongDiCeng\SD_System\SD_driver.c" ""
+A50=_ "F:\Science\Smart Car\National Final Competition\Program\Program Backups\正式程序\KinetisCar_CW_IAR V1.04 READY\Make_Decision\MakeDecision.c" ""
+Count=51
+SuppressDialog=1

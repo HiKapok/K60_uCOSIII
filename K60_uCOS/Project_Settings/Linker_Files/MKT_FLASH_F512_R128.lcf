@@ -1,0 +1,97 @@
+# Kinetis FLASH调试方式Linker文件
+# 对应存储器容量：FLASH 512K ; RAM 128K
+
+MEMORY {
+m_interrupts  (RX) : ORIGIN = 0x00000000, LENGTH = 0x000001E0
+m_text        (RX) : ORIGIN = 0x00000800, LENGTH = 0x00080000-0x00000800
+Sword_vector  (RX) : ORIGIN = 0x1FFF0000, LENGTH = 0x000001E0              # 存放RAM中的vector_table
+m_data        (RW) : ORIGIN = 0x1FFF01E0, LENGTH = 0x0001FF00-0x000001E0
+Sword_keep    (RW) : ORIGIN = 0x2000FF00, LENGTH = 0x000000FF              # 255byte非初始化内存
+m_cfmprotrom  (RX) : ORIGIN = 0x00000400, LENGTH = 0x00000010
+}
+
+KEEP_SECTION { .vectortable }
+KEEP_SECTION { .cfmconfig }
+
+SECTIONS {
+
+.interrupts :
+{
+    __vector_table = .;
+    * (.vectortable)
+    . = ALIGN (0x4);
+} > m_interrupts
+
+.cfmprotect :
+{
+    *(.cfmconfig)
+    . = ALIGN (0x4);
+} > m_cfmprotrom
+
+.app_text: 
+{
+	ALIGNALL(4);
+   	* (.init)	
+   	* (.text)
+		.= ALIGN(0x8) ;
+	* (.rodata)
+		.= ALIGN(0x4) ;
+    ___ROM_AT = .;
+    __DATA_ROM = .;             #ROM TO RAM数据区的ROM起始地址
+} > m_text
+.app_data: AT(___ROM_AT)
+{
+    __DATA_RAM = .;             #ROM TO RAM数据区的RAM起始地址
+   	* (.sdata)
+   	* (.data)
+		.= ALIGN(0x4) ;
+   	*(.ARM.extab)
+		.= ALIGN(0x4) ;
+       __exception_table_start__ = .;
+   	EXCEPTION
+       __exception_table_end__ = .;
+		.= ALIGN(0x4) ;
+       __sinit__ = .;
+   	STATICINIT
+	.= ALIGN(0x8) ;
+	__DATA_END = .;             #ROM TO RAM数据区的RAM结束地址
+} > m_data
+.bss :
+{
+	.= ALIGN(0x4) ;
+	__START_BSS = .;
+	* (.bss)
+	__END_BSS = .;
+	.= ALIGN(0x8) ;
+} >> m_data
+
+_romp_at = ___ROM_AT + SIZEOF(.app_data);
+.romp : AT(_romp_at)
+{
+    __S_romp = _romp_at;
+    WRITEW(___ROM_AT);
+    WRITEW(ADDR(.app_data));
+    WRITEW(SIZEOF(.app_data));
+    WRITEW(0);
+    WRITEW(0);
+    WRITEW(0);
+}
+
+__SP_INIT = . + 0x00008000;
+__heap_addr = __SP_INIT;
+__heap_size = 0x00008000;
+
+.no_init :
+{
+   . = ALIGN(0x8);	
+   * (.sbss)          # 不被清零的内存区域
+   . = ALIGN(0x8);	
+} > Sword_keep
+
+.ram_vector :
+{
+  . = ALIGN(0x8);
+  __Sword_Vector__ = .;  # 存放RAM中的向量表的指针
+} > Sword_vector
+
+}

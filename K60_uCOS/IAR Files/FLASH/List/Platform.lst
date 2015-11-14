@@ -1,0 +1,355 @@
+###############################################################################
+#                                                                             #
+#                                                       03/Nov/2015  20:45:52 #
+# IAR ANSI C/C++ Compiler V6.30.6.23336/W32 EVALUATION for ARM                #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\Platform\Platfo #
+#                    rm.c                                                     #
+#    Command line =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\Platform\Platfo #
+#                    rm.c -D COMPILER_IAR -lCN "C:\Users\WangChangan\Desktop\ #
+#                    K10Ð¡°å¶¨¸å\IAR Files\FLASH\List\" -lB                   #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\FLASH\List\" -o "C:\Users\WangChangan\Desktop\K10Ð #
+#                    ¡°å¶¨¸å\IAR Files\FLASH\Obj\" --no_cse --no_unroll       #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M4  #
+#                    -e --fpu=None --dlib_config "C:\Program Files\IAR        #
+#                    Systems\Embedded Workbench 6.0                           #
+#                    Evaluation\arm\INC\c\DLib_Config_Normal.h" -I            #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Project_Headers\" -I                            #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\KinetisDrivers\" -I                             #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\ExtraFunction\" -I                              #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Hardware_Interface\" -I                         #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Make_Decision\" -I                              #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Math\" -I "C:\Users\WangChangan\Desktop\K10Ð¡°å #
+#                    ¶¨¸å\IAR Files\..\Original_Process\" -I                  #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Platform\" -I "C:\Users\WangChangan\Desktop\K10 #
+#                    Ð¡°å¶¨¸å\IAR Files\..\SD_System\" -I                     #
+#                    "C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR            #
+#                    Files\..\Source\" -I "C:\Users\WangChangan\Desktop\K10Ð¡ #
+#                    °å¶¨¸å\IAR Files\..\System_Init\" -Ol                    #
+#    List file    =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR             #
+#                    Files\FLASH\List\Platform.lst                            #
+#    Object file  =  C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\IAR             #
+#                    Files\FLASH\Obj\Platform.o                               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Users\WangChangan\Desktop\K10Ð¡°å¶¨¸å\Platform\Platform.c
+      1          #include "./Platform.h"
+      2          
+      3          /************************************************************************************************ 
+      4          * Cpu_Init
+      5          * ³õÊ¼»¯CPUµÄÏà¹ØÉèÖÃ,Èç×ÜÏßÊ±ÖÓ,Ïà¹Ø×´Ì¬¼Ä´æÆ÷µÈ
+      6          ************************************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void CPU_Init(void)
+      8          {   
+      9          	/* ÔÚÕâÀïËùÓÐµÄ³õÊ¼»¯¹¤×÷¶¼ÔÚÆô¶¯´úÂëÖÐÍê³ÉÁË,ËùÒÔCpu_Init()±»¶¨ÒåÎª¿Õº¯Êý */
+     10          }
+   \                     CPU_Init:
+   \   00000000   0x4770             BX       LR               ;; return
+     11          /************************************************************************************************ 
+     12          * WatchDog_Init
+     13          * ¿´ÃÅ¹·³õÊ¼»¯(ÕâÀï½«¿´ÃÅ¹·¶¨Ê±Æ÷µÄÒç³öÖÜÆÚÉèÖÃÎª16ms)
+     14            (Æä²ÎÊýÓë×ÜÏßÊ±ÖÓÏà¹Ø)
+     15          ************************************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     16          void WatchDog_Init(void)          
+     17          {    
+     18          #if EN_WatchDog != 0                
+     19            UNLOCK_WatchDog;       /* ½âËø¿ªÃÅ¹· */
+   \                     WatchDog_Init:
+   \   00000000   0x....             LDR.N    R0,??DataTable2  ;; 0x4005200e
+   \   00000002   0xF24C 0x5120      MOVW     R1,#+50464
+   \   00000006   0x8001             STRH     R1,[R0, #+0]
+   \   00000008   0x....             LDR.N    R0,??DataTable2  ;; 0x4005200e
+   \   0000000A   0xF64D 0x1128      MOVW     R1,#+55592
+   \   0000000E   0x8001             STRH     R1,[R0, #+0]
+     20          	
+     21            WDOG_PRESC = 0;        /* ÉèÖÃÊ±ÖÓ·ÖÆµÊýÎª1 */
+   \   00000010   0x....             LDR.N    R0,??DataTable2_1  ;; 0x40052016
+   \   00000012   0x2100             MOVS     R1,#+0
+   \   00000014   0x8001             STRH     R1,[R0, #+0]
+     22          	
+     23            WDOG_TOVALH = 0x000E;  /* ÉèÖÃÒç³öÖÜÆÚ */
+   \   00000016   0x....             LDR.N    R0,??DataTable2_2  ;; 0x40052004
+   \   00000018   0x210E             MOVS     R1,#+14
+   \   0000001A   0x8001             STRH     R1,[R0, #+0]
+     24            WDOG_TOVALL = 0xA600;
+   \   0000001C   0x....             LDR.N    R0,??DataTable2_3  ;; 0x40052006
+   \   0000001E   0xF44F 0x4126      MOV      R1,#+42496
+   \   00000022   0x8001             STRH     R1,[R0, #+0]
+     25          	
+     26            WDOG_STCTRLH = 0x4003; /* ¹Ø±ÕTestModeºÍWindowMode,Ñ¡ÔñÊ±ÖÓÎª×ÜÏßÊ±ÖÓ,²¢Ê¹ÄÜ¿ªÃÅ¹· */
+   \   00000024   0x....             LDR.N    R0,??DataTable2_4  ;; 0x40052000
+   \   00000026   0xF244 0x0103      MOVW     R1,#+16387
+   \   0000002A   0x8001             STRH     R1,[R0, #+0]
+     27          /*
+     28          ------------------------------------------------------------------------------------ 
+     29               !!! ²»ÒªÑ¡ÔñLPOµÄÊ±ÖÓ,·ñÔòÆµ·±µÄÎ¹¹·¿ÉÄÜ³öÏÖÎÊÌâ  !!!
+     30                        ÔÚDataSheetµÄ509Ò³¿ªÊ¼ÓÐÕâÃ´Ò»¶Î»°"You must take care not only to refresh the 
+     31            watchdog within the watchdog timer's actual time-out period, but also provide 
+     32            enough allowance for the time it takes for the refresh sequence to be detected 
+     33            by the watchdog timer, on the watchdog clock."
+     34                         ËäÈ»Ã»ÍêÈ«¿´Ã÷°×,µ«¸Ð¾õÈç¹ûÁ½´ÎÎ¹¹·Ð¡ÓÚÒ»¸öwatchdog clockµÄ»°Ó¦¸Ã»á³öÎÊÌâ£¬ÔÚÊµ¼ù
+     35               ÖÐÒ²È·ÊµÓöµ½ÁËÀàËÆµÄÎÊÌâ¡£ËùÒÔÒ»¶¨Òª°Ñ¿´ÃÅ¹·Ê±ÖÓÉèÖÃÎª×ÜÏßÊ±ÖÓ.
+     36          ------------------------------------------------------------------------------------ 
+     37          */
+     38          	
+     39            C_WDOG_IntOff();
+   \   0000002C   0x....             LDR.N    R0,??DataTable2_5  ;; 0x4005200c
+   \   0000002E   0xF24A 0x6102      MOVW     R1,#+42498
+   \   00000032   0x8001             STRH     R1,[R0, #+0]
+   \   00000034   0x....             LDR.N    R0,??DataTable2_5  ;; 0x4005200c
+   \   00000036   0xF24B 0x4180      MOVW     R1,#+46208
+   \   0000003A   0x8001             STRH     R1,[R0, #+0]
+     40          #endif
+     41          }
+   \   0000003C   0x4770             BX       LR               ;; return
+     42          /************************************************************************************************ 
+     43          * GPIO_Init
+     44          * GPIO¿Ú³õÊ¼»¯ÉèÖÃ
+     45          ************************************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     46          void GPIO_Init(void)          
+     47          {
+     48            /* PTE25¿ØÖÆ·äÃùÆ÷ */  
+     49            PORTE_PCR25 = PORT_PCR_MUX(1);
+   \                     GPIO_Init:
+   \   00000000   0x....             LDR.N    R0,??DataTable2_6  ;; 0x4004d064
+   \   00000002   0xF44F 0x7180      MOV      R1,#+256
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+     50            GPIOE_PDDR |= 0x02000000; 
+   \   00000008   0x....             LDR.N    R0,??DataTable2_7  ;; 0x400ff114
+   \   0000000A   0x6800             LDR      R0,[R0, #+0]
+   \   0000000C   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \   00000010   0x....             LDR.N    R1,??DataTable2_7  ;; 0x400ff114
+   \   00000012   0x6008             STR      R0,[R1, #+0]
+     51            OFF_Buzzer();
+   \   00000014   0x....             LDR.N    R0,??DataTable2_8  ;; 0x400ff104
+   \   00000016   0x6800             LDR      R0,[R0, #+0]
+   \   00000018   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \   0000001C   0x....             LDR.N    R1,??DataTable2_8  ;; 0x400ff104
+   \   0000001E   0x6008             STR      R0,[R1, #+0]
+     52            
+     53            /* PTB9¡¢PTB16¡¢PTB18¡¢PTB20½Óboma¿ª¹Ø */
+     54            PORTB_PCR9 = PORT_PCR_MUX(1) | PORT_PCR_PE_MASK | PORT_PCR_PS_MASK;
+   \   00000020   0x....             LDR.N    R0,??DataTable2_9  ;; 0x4004a024
+   \   00000022   0xF240 0x1103      MOVW     R1,#+259
+   \   00000026   0x6001             STR      R1,[R0, #+0]
+     55            PORTB_PCR16 = PORT_PCR_MUX(1) | PORT_PCR_PE_MASK | PORT_PCR_PS_MASK;
+   \   00000028   0x....             LDR.N    R0,??DataTable2_10  ;; 0x4004a040
+   \   0000002A   0xF240 0x1103      MOVW     R1,#+259
+   \   0000002E   0x6001             STR      R1,[R0, #+0]
+     56            PORTB_PCR18 = PORT_PCR_MUX(1) | PORT_PCR_PE_MASK | PORT_PCR_PS_MASK;
+   \   00000030   0x....             LDR.N    R0,??DataTable2_11  ;; 0x4004a048
+   \   00000032   0xF240 0x1103      MOVW     R1,#+259
+   \   00000036   0x6001             STR      R1,[R0, #+0]
+     57            PORTB_PCR20 = PORT_PCR_MUX(1) | PORT_PCR_PE_MASK | PORT_PCR_PS_MASK;
+   \   00000038   0x....             LDR.N    R0,??DataTable2_12  ;; 0x4004a050
+   \   0000003A   0xF240 0x1103      MOVW     R1,#+259
+   \   0000003E   0x6001             STR      R1,[R0, #+0]
+     58            GPIOB_PDDR &= ~0x00150200;                   
+   \   00000040   0x....             LDR.N    R0,??DataTable2_13  ;; 0x400ff054
+   \   00000042   0x6800             LDR      R0,[R0, #+0]
+   \   00000044   0x....             LDR.N    R1,??DataTable2_14  ;; 0xffeafdff
+   \   00000046   0x4008             ANDS     R0,R1,R0
+   \   00000048   0x....             LDR.N    R1,??DataTable2_13  ;; 0x400ff054
+   \   0000004A   0x6008             STR      R0,[R1, #+0]
+     59          }
+   \   0000004C   0x4770             BX       LR               ;; return
+     60          
+     61          /************************************************************************************************ 
+     62          * IntTick_Init
+     63          * ³õÊ¼»¯ÏµÍ³Ê±ÖÓÖÐ¶Ï
+     64          ************************************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     65          void IntTick_Init(void)
+     66          {
+   \                     IntTick_Init:
+   \   00000000   0xB510             PUSH     {R4,LR}
+     67            SIM_SCGC6 |= SIM_SCGC6_PIT_MASK;             /* Ê¹ÄÜPITµÄÊ±ÖÓ */
+   \   00000002   0x....             LDR.N    R0,??DataTable2_15  ;; 0x4004803c
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0xF450 0x0000      ORRS     R0,R0,#0x800000
+   \   0000000A   0x....             LDR.N    R1,??DataTable2_15  ;; 0x4004803c
+   \   0000000C   0x6008             STR      R0,[R1, #+0]
+     68          
+     69            (void)EnableInt_Kinetis(68);                 /* ¿ªÆô¶ÔÓ¦µÄÖÐ¶Ï */
+   \   0000000E   0x2044             MOVS     R0,#+68
+   \   00000010   0x.... 0x....      BL       EnableInt_Kinetis
+   \   00000014   0x0004             MOVS     R4,R0
+     70            (void)SetIntPri_Kinetis(68,9);               /* Éè¶¨ÖÐ¶ÏµÄÓÅÏÈ¼¶Îª9,Òª±ÈÉãÏñÍ·ÖÐ¶ÏµÍ */
+   \   00000016   0x2109             MOVS     R1,#+9
+   \   00000018   0x2044             MOVS     R0,#+68
+   \   0000001A   0x.... 0x....      BL       SetIntPri_Kinetis
+     71                                                       /* !!! ×¢ÒâÖµÔ½Ð¡ÓÅÏÈ¼¶Ô½¸ß !!! */
+     72          
+     73            PIT_MCR = 0;                                 /* ¿ªÆôÊ±ÖÓ,ÔÚDEBUGÊ±Ê¹ÄÜPIT */
+   \   0000001E   0x....             LDR.N    R1,??DataTable2_16  ;; 0x40037000
+   \   00000020   0x2200             MOVS     R2,#+0
+   \   00000022   0x600A             STR      R2,[R1, #+0]
+     74            PIT_LDVAL0 = System_Tick_ms * 1000L * System_Fbus; /* ¼ÆÊý³õÖµ */      
+   \   00000024   0x....             LDR.N    R1,??DataTable2_17  ;; 0x40037100
+   \   00000026   0x....             LDR.N    R2,??DataTable2_18  ;; 0x927c0
+   \   00000028   0x600A             STR      R2,[R1, #+0]
+     75          
+     76            PIT_TCTRL0 = PIT_TCTRL_TIE_MASK;             /* Ê¹ÄÜPITÖÐ¶Ï */
+   \   0000002A   0x....             LDR.N    R1,??DataTable2_19  ;; 0x40037108
+   \   0000002C   0x2202             MOVS     R2,#+2
+   \   0000002E   0x600A             STR      R2,[R1, #+0]
+     77          
+     78            PIT_TCTRL0 |= PIT_TCTRL_TEN_MASK;            /* ¿ªÆô¼ÆÊýÆ÷ */
+   \   00000030   0x....             LDR.N    R1,??DataTable2_19  ;; 0x40037108
+   \   00000032   0x6809             LDR      R1,[R1, #+0]
+   \   00000034   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \   00000038   0x....             LDR.N    R2,??DataTable2_19  ;; 0x40037108
+   \   0000003A   0x6011             STR      R1,[R2, #+0]
+     79          }
+   \   0000003C   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x4005200E         DC32     0x4005200e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x40052016         DC32     0x40052016
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x40052004         DC32     0x40052004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   0x40052006         DC32     0x40052006
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \   00000000   0x40052000         DC32     0x40052000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \   00000000   0x4005200C         DC32     0x4005200c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_6:
+   \   00000000   0x4004D064         DC32     0x4004d064
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_7:
+   \   00000000   0x400FF114         DC32     0x400ff114
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_8:
+   \   00000000   0x400FF104         DC32     0x400ff104
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_9:
+   \   00000000   0x4004A024         DC32     0x4004a024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_10:
+   \   00000000   0x4004A040         DC32     0x4004a040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_11:
+   \   00000000   0x4004A048         DC32     0x4004a048
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_12:
+   \   00000000   0x4004A050         DC32     0x4004a050
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_13:
+   \   00000000   0x400FF054         DC32     0x400ff054
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_14:
+   \   00000000   0xFFEAFDFF         DC32     0xffeafdff
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_15:
+   \   00000000   0x4004803C         DC32     0x4004803c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_16:
+   \   00000000   0x40037000         DC32     0x40037000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_17:
+   \   00000000   0x40037100         DC32     0x40037100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_18:
+   \   00000000   0x000927C0         DC32     0x927c0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_19:
+   \   00000000   0x40037108         DC32     0x40037108
+     80          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        0  CPU_Init
+        0  GPIO_Init
+        8  IntTick_Init
+             8 -> EnableInt_Kinetis
+             8 -> SetIntPri_Kinetis
+        0  WatchDog_Init
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_10
+       4  ??DataTable2_11
+       4  ??DataTable2_12
+       4  ??DataTable2_13
+       4  ??DataTable2_14
+       4  ??DataTable2_15
+       4  ??DataTable2_16
+       4  ??DataTable2_17
+       4  ??DataTable2_18
+       4  ??DataTable2_19
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+       4  ??DataTable2_5
+       4  ??DataTable2_6
+       4  ??DataTable2_7
+       4  ??DataTable2_8
+       4  ??DataTable2_9
+       2  CPU_Init
+      78  GPIO_Init
+      62  IntTick_Init
+      62  WatchDog_Init
+
+ 
+ 284 bytes in section .text
+ 
+ 284 bytes of CODE memory
+
+Errors: none
+Warnings: none
